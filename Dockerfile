@@ -8,7 +8,8 @@ RUN \
         fcgiwrap \
         curl \
         busybox \
-        jq
+        jq \
+        tini
 
 RUN \
     ldd_jail build \
@@ -16,7 +17,8 @@ RUN \
         /usr/bin/curl \
         /usr/bin/busybox \
         /usr/bin/bash \
-        /usr/bin/jq
+        /usr/bin/jq \
+        /usr/bin/tini
 
 RUN \
     mkdir /tmp/build/bin &&\
@@ -26,4 +28,4 @@ FROM scratch
 
 COPY --from=build /tmp/build /
 
-CMD fcgiwrap -f -c 2 -s unix:/dev/shm/fcgi.sock
+CMD tini -v -s -- fcgiwrap -f -c 2 -s unix:/dev/shm/fcgi.sock
