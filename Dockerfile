@@ -10,6 +10,7 @@ RUN \
     apt-get -q -y install \
         fcgiwrap=$FCGIWRAP_VERSION \
         curl \
+        ca-certificates \
         busybox \
         jq \
         tini
@@ -18,6 +19,7 @@ RUN \
     ldd_jail build \
         /usr/sbin/fcgiwrap \
         /usr/bin/curl \
+        /etc/ssl/certs/ca-certificates.crt \
         /usr/bin/busybox \
         /usr/bin/bash \
         /usr/bin/jq \
