@@ -1,11 +1,14 @@
 FROM ghcr.io/mihaiush/build:26.824.16 AS build
 
+# renovate: datasource=deb depName=squid-openssl registryUrl=https://deb.debian.org/debian?suite=testing&components=main&binaryArch=amd64
+ENV FCGIWRAP_VERSION="1.1.0-17"
+
 RUN \
     export DEBIAN_FRONTEND=noninteractive &&\
     apt-get -q -y update &&\
     apt-get -q -y dist-upgrade --auto-remove &&\
     apt-get -q -y install \
-        fcgiwrap \
+        fcgiwrap=$FCGIWRAP_VERSION \
         curl \
         busybox \
         jq \
