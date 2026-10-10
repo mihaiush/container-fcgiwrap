@@ -1,7 +1,7 @@
 FROM ghcr.io/mihaiush/build:26.824.16 AS build
 
 # renovate: datasource=deb depName=squid-openssl registryUrl=https://deb.debian.org/debian?suite=testing&components=main&binaryArch=amd64
-ENV FCGIWRAP_VERSION="1.1.0-17"
+ENV FCGIWRAP_VERSION="7.7-1"
 
 RUN \
     export DEBIAN_FRONTEND=noninteractive &&\
