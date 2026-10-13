@@ -58,10 +58,10 @@ jobs:
         id: meta
         uses: docker/metadata-action@v6
         with:
-          images: ghcr.io/${{ github.repository_owner }}/${{ step.dockervars.outputs.name }}
+          images: ghcr.io/${{ github.repository_owner }}/${{ steps.dockervars.outputs.name }}
           tags: |
             # Fixed prefix combined with extracted Dockerfile base version
-            type=raw,value=${{ step.dockervars.outputs.tag }}
+            type=raw,value=${{ steps.dockervars.outputs.tag }}
             
             # Optional: Keep 'latest' tag on the main branch
             type=raw,value=latest,enable=${{ github.ref == 'refs/heads/main' }}
