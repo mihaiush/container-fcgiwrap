@@ -1,6 +1,8 @@
 name: Build and Push Docker Image (amd64)
 
 on:
+  pull_request:
+    branches: [ "main" ]
   push:
     branches: [ "main" ]
     
@@ -9,7 +11,20 @@ permissions:
   packages: write
 
 jobs:
+  hadolint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Lint Dockerfile
+        uses: hadolint/hadolint-action@v3.5.0
+        with:
+          dockerfile: Dockerfile
+          failure-threshold: error
+
   build-and-push:
+    needs: hadolint
+    if: github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository

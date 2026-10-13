@@ -10,9 +10,22 @@
         "/^Dockerfile$/"
       ],
       "matchStrings": [
-        "#\\s*renovate:\\s*datasource=(?<datasource>\\S+)\\s+depName=(?<depName>\\S+)(\\s+registryUrl=(?<registryUrl>\\S+))?\\nENV\\s+[A-Z_]+_VERSION=\"(?<currentValue>[^\"]+)\""
+        "#\\s*renovate:\\s*datasource=(?<datasource>\\S+)\\s+depName=(?<depName>\\S+)(\\s+registryUrl=(?<registryUrl>\\S+))?\\n(ENV|ARG)\\s+[A-Z_]+_VERSION=\"(?<currentValue>[^\"]+)\""
       ],
       "versioningTemplate": "loose"
+    }
+  ],
+  "customDatasources": {
+    "version": {
+      "defaultRegistryUrlTemplate": "https://home.mihaiush.ro/cgi-bin/{{packageName}}-version",
+      "format": "plain"
+    }
+  },
+  "platformAutomerge": true,
+  "packageRules": [
+    {
+      "matchUpdateTypes": ["*"],
+      "automerge": true
     }
   ]
 }
