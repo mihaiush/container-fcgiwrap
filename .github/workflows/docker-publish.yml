@@ -33,10 +33,17 @@ jobs:
       - name: Extract data from Dockerfile
         id: dockervars
         run: |
-          NAME=$(echo "${{ github.event.repository.name }}" | awk -F'container-' '{print $2}')
+          if [ -x "dockervars.sh" ] ; then
+            . <(./dockervars.sh)
+          fi
+          if [ -z "$NAME" ] ; then
+            NAME=$(echo "${{ github.event.repository.name }}" | awk -F'container-' '{print $2}')
+          fi
           echo "name=${NAME}" >> "$GITHUB_OUTPUT"
-          TAG=$(echo $NAME | tr '[a-z]' '[A-Z]')
-          TAG=$(awk -F'"' '/'${TAG}'_VERSION=/{print $2}' Dockerfile)
+          if [ -z "$TAG" ] ; then
+            TAG=$(echo $NAME | tr '[a-z]' '[A-Z]')
+            TAG=$(awk -F'"' '/'${TAG}'_VERSION=/{print $2}' Dockerfile)
+          fi
           if [[ "$TAG" =~ ^[0-9]+\.[0-9]$ ]]; then
             TAG="${TAG}.${{ github.run_number }}"
           else
