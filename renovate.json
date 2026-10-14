@@ -1,31 +1,5 @@
 {
-  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:recommended"
-  ],
-  "customManagers": [
-    {
-      "customType": "regex",
-      "managerFilePatterns": [
-        "/^Dockerfile$/"
-      ],
-      "matchStrings": [
-        "#\\s*renovate:\\s*datasource=(?<datasource>\\S+)\\s+depName=(?<depName>\\S+)(\\s+registryUrl=(?<registryUrl>\\S+))?\\n(ENV|ARG)\\s+[A-Z_]+_VERSION=\"(?<currentValue>[^\"]+)\""
-      ],
-      "versioningTemplate": "loose"
-    }
-  ],
-  "customDatasources": {
-    "version": {
-      "defaultRegistryUrlTemplate": "https://home.mihaiush.ro/cgi-bin/{{packageName}}-version",
-      "format": "plain"
-    }
-  },
-  "platformAutomerge": true,
-  "packageRules": [
-    {
-      "matchUpdateTypes": ["*"],
-      "automerge": true
-    }
+    "github>mihaiush/ci//renovate-regex.json#main"
   ]
 }
