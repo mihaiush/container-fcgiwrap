@@ -18,6 +18,7 @@ RUN \
 RUN \
     ldd_jail build \
         /usr/sbin/fcgiwrap \
+        /usr/bin/mawk \
         /usr/bin/curl \
         /etc/ssl/certs/ca-certificates.crt \
         /usr/bin/busybox \
