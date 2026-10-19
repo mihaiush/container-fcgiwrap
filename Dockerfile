@@ -9,8 +9,8 @@ RUN \
     apt-get -q -y dist-upgrade --auto-remove &&\
     apt-get -q -y install \
         fcgiwrap=$FCGIWRAP_VERSION \
+        mawk \
         curl \
-        ca-certificates \
         busybox \
         jq \
         tini
