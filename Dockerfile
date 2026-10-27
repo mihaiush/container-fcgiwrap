@@ -1,4 +1,4 @@
-FROM ghcr.io/mihaiush/build:26.824.32 AS build
+FROM ghcr.io/mihaiush/build:26.1020.39 AS build
 
 # renovate: datasource=deb depName=fcgiwrap registryUrl=https://deb.debian.org/debian?suite=testing&components=main&binaryArch=amd64
 ENV FCGIWRAP_VERSION="1.1.0-17"
