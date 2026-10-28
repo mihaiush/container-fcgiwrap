@@ -1,5 +1,0 @@
-{
-  "extends": [
-    "github>mihaiush/ci//renovate-regex.json#main"
-  ]
-}

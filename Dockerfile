@@ -1,6 +1,6 @@
 FROM ghcr.io/mihaiush/build:26.1027.44 AS build
 
-# renovate: datasource=deb depName=fcgiwrap registryUrl=https://deb.debian.org/debian?suite=testing&components=main&binaryArch=amd64
+# renovate-regex: datasource=deb packageName=fcgiwrap registryUrl=https://deb.debian.org/debian?suite=testing&components=main&binaryArch=amd64
 ENV FCGIWRAP_VERSION="1.1.0-17"
 
 RUN \
